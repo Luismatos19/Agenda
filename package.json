@@ -1,0 +1,17 @@
+{
+  "name": "agenda",
+  "version": "1.0.0",
+  "description": "agenda contatos",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Luis",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.7",
+    "save": "^2.4.0"
+  }
+}
