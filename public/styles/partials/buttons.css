@@ -1,0 +1,40 @@
+.button {
+  padding: 0.75rem 3rem;
+  border-radius: 0.313rem;
+  border: 0;
+
+  font-family: IBM Plex Sans;
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1.625rem;
+  text-transform: uppercase;
+
+  transition: all .2s;
+
+  cursor:pointer;
+
+  display: inline-flex;
+  justify-content:center;
+  align-items: center;
+
+  
+}
+
+button.button {
+  line-height: 1.5rem;
+}
+
+.button.gray {
+  background: black;
+  color: white;
+}
+
+.button.gray:hover {
+  background:  gray;
+}
+
+
+
+
+
+
