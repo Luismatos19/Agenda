@@ -1,0 +1,41 @@
+/* -------------Header ---------------------*/
+.main-header {
+  background: var(--color-primary);
+  width: 100vw;
+  height: 20rem;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.logotipo {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 4rem;
+  height: 4rem;
+  margin-right: 1rem;
+}
+
+.user {
+  margin-right: 1rem;
+  width: 3rem;
+  height: 3rem;
+}
+
+/* -------------Separator---------------------*/
+
+.separator {
+  height: 1px;
+  background-color: var(--color-gray);
+  margin: 1rem 0px;
+}
