@@ -1,0 +1,104 @@
+<%- include("parts/header", {title: 'Agenda de contatos' }) %>
+
+  <div class="container">
+    <div class="contact-content">
+      <form action="/" id="form-contact" method="POST">
+        <fieldset>
+          <legend>Dados do Contato</legend>
+          <div class="separator light"></div>
+
+          <div class="input-group">
+            <div class="input-wrapper">
+              <label for="name">Nome do Contato:</label>
+              <input type="text" id="name" name="name" />
+            </div>
+
+
+            <div class="input-wrapper">
+              <label for="daily-hours">Sobrenome:</label>
+              <input type="text" id="last-name" name="last-name" />
+            </div>
+          </div>
+
+          <div class="input-group">
+            <div class="input-wrapper">
+              <label for="total-hours">Telefone:</label>
+              <input type="phone" id="phone-number" name="phone-number" />
+            </div>
+
+            <div class="input-wrapper">
+              <label for="name">Email:</label>
+              <input type="email" id="email" name="email" />
+            </div>
+          </div>
+
+          <div class="addres">
+            <h3>Endereço</h3>
+          </div>
+
+          <div class="input-group">
+            <div class="input-wrapper">
+              <label for="cep">Cep</label>
+              <input type="text" id="cep" name="cep" />
+            </div>
+
+            <div class="input-wrapper">
+              <label for="logradouro">Rua:</label>
+              <input type="text" id="logradouro" name="logradouro" />
+            </div>
+
+            <div class="input-wrapper">
+              <label for="bairro">Bairro:</label>
+              <input type="text" id="bairro" name="bairro" />
+            </div>
+
+            <div class="input-wrapper">
+              <label for="name">Numero:</label>
+              <input type="number" id="numero-casa" name="numero-casa" />
+            </div>
+
+            <div class="input-wrapper">
+              <label for="cidade">Cidade:</label>
+              <input type="text" id="cidade" name="cidade" />
+            </div>
+
+            <div class="input-wrapper">
+              <label for="uf">UF:</label>
+              <input type="text" id="uf" name="uf" />
+            </div>
+
+          </div>
+
+        </fieldset>
+      </form>
+
+
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    $("#cep").focusout(function () {
+
+      $.ajax({
+
+        url: 'https://viacep.com.br/ws/' + $(this).val() + '/json/unicode/',
+
+        dataType: 'json',
+
+        success: function (resposta) {
+
+          $("#logradouro").val(resposta.logradouro);
+          $("#complemento").val(resposta.complemento);
+          $("#bairro").val(resposta.bairro);
+          $("#cidade").val(resposta.localidade);
+          $("#uf").val(resposta.uf);
+
+          $("#numero").focus();
+        }
+      });
+    });
+  </script>
+
+  </body>
+
+  </html>

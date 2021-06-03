@@ -1,50 +1,8 @@
-/* -------------Header ---------------------*/
-header {
-  background: var(--color-primary);
-  width: 100vw;
-  height: 20rem;
-  padding-top: 1rem;
-  padding-bottom: 3rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.title {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-.logotipo {
-  display: flex;
-  align-items: center;
-}
-
-.logo {
-  width: 4rem;
-  height: 4rem;
-  margin-right: 1rem;
-}
-
-.user {
-  margin-right: 1rem;
-  width: 3rem;
-  height: 3rem;
-}
-
 /* -------------Input---------------------*/
 input {
   width: 20rem;
   height: 2.5rem;
   margin-right: 0.3rem;
-}
-
-/* -------------Separator---------------------*/
-
-.separator {
-  height: 1px;
-  background-color: var(--color-gray);
-  margin: 1rem 0px;
 }
 
 /* -------------Sumary---------------------*/
@@ -60,7 +18,69 @@ input {
 /* -------------Content---------------------*/
 
 .content {
-  background-color: white;
   margin-top: 3rem;
   border-radius: 3px;
+}
+
+/* -------------Cards---------------------*/
+
+.cards {
+  margin-top: 2rem;
+  background-color: var(--color-background);
+}
+
+.card-section {
+  margin-top: 0.5rem;
+}
+
+#card-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-nome {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.category {
+  text-align: center;
+}
+
+.category h4 {
+  background-color: var(--color-primary);
+  border-radius: 2.5rem;
+  font-size: 1rem;
+  padding: 5px;
+}
+
+.actions {
+  color: var(--color-primary);
+  margin-right: 1rem;
+}
+
+.actions i {
+  padding-right: 0.5rem;
+  size: 3rem;
+}
+
+.actions i:hover {
+  color: black;
+}
+
+.avatar {
+  width: 5rem;
+  height: 5rem;
+  background-color: var(--color-primary);
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem 0.5rem;
+
+  border: none;
 }

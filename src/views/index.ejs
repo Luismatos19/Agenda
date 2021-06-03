@@ -1,44 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
-  <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="/styles/index.css" />
-  <link rel="stylesheet" href="/styles/partials/buttons.css" />
-
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
-    rel="stylesheet" />
-
-  <title>Agenda</title>
-</head>
-
-<body>
-
-  <header>
-    <div class="title">
-      <div class="logotipo">
-        <img class="logo" src="/images/logo.png" alt="Logo" />
-        <h1>Agenda Contatos</h1>
-      </div>
-      <div class="navbar">
-        <img src="/images/user.png" alt="User logo" class="user">
-        <h2> Luis M. </h2>
-
-      </div>
-
-    </div>
-    <div class="separator"></div>
-  </header>
-
+<%- include("parts/header", {title: 'Agenda de contatos' }) %>
 
 
   <div class="container">
@@ -57,7 +17,7 @@
         </svg>
       </div>
 
-      <a class="button gray" href="/">
+      <a class="button gray" href="/contact">
         <span>
           <img src="/images/plus-24.svg" alt="Novo Contato" />
         </span>
@@ -66,23 +26,101 @@
 
     </div>
 
-    <section class="content">
-      <h2>dfjdiofsajdsfd</h2>
-      <h2>dfjdiofsajdsfd</h2>
-      <h2>dfjdiofsajdsfd</h2>
-      <h2>dfjdiofsajdsfd</h2>
-      <h2>dfjdiofsajdsfd</h2>
-      <h2>dfjdiofsajdsfd</h2>
+    <section class="cards">
+      <div class="card border-dark mb-2" id="card-content">
+        <div class="card-nome">
+          <div class="avatar">
+            <h1>L</h1>
+          </div>
+          <div>
+            <h2>Luis Matos</h2>
+          </div>
+        </div>
+        <div class="category">
+          <p>Categoria</p>
+          <h4>Amigos</h4>
+        </div>
+        <div class="actions">
+          <div style="font-size: 1.5rem;">
+            <i class="bi bi-trash"></i>
+            <i class="bi bi-pencil-square"></i>
+            <i class="bi bi-star"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="card border-dark mb-2" id="card-content">
+        <div class="card-nome">
+          <div class="avatar">
+            <h1>L</h1>
+          </div>
+          <div>
+            <h2>Luis Matos</h2>
+          </div>
+        </div>
+        <div class="category">
+          <p>Categoria</p>
+          <h4>Trabalho</h4>
+        </div>
+        <div class="actions">
+          <div style="font-size: 1.5rem;">
+            <i class="bi bi-trash"></i>
+            <i class="bi bi-pencil-square"></i>
+            <i class="bi bi-star"></i>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card border-dark mb-2" id="card-content">
+        <div class="card-nome">
+          <div class="avatar">
+            <h1>L</h1>
+          </div>
+          <div>
+            <h2>Luis Matos</h2>
+          </div>
+        </div>
+        <div class="category">
+          <p>Categoria</p>
+          <h4>Familia</h4>
+        </div>
+        <div class="actions">
+          <div style="font-size: 1.5rem;">
+            <i class="bi bi-trash"></i>
+            <i class="bi bi-pencil-square"></i>
+            <i class="bi bi-star"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="card border-dark mb-2" id="card-content">
+        <div class="card-nome">
+          <div class="avatar">
+            <h1>L</h1>
+          </div>
+          <div>
+            <h2>Luis Matos</h2>
+          </div>
+        </div>
+        <div class="category">
+          <p>Categoria</p>
+          <h4>Familia</h4>
+        </div>
+        <div class="actions">
+          <div style="font-size: 1.5rem;">
+            <i class="bi bi-trash bi-4x"></i>
+            <i class="bi bi-pencil-square"></i>
+            <i class="bi bi-star"></i>
+          </div>
+        </div>
+      </div>
 
     </section>
 
-
-
+  </div>
   </div>
 
+  </body>
 
-  </div>
-
-</body>
-
-</html>
+  </html>

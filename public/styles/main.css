@@ -9,6 +9,7 @@
 :root {
   --color-background: #e1f5fe;
   --color-text: black;
+  --color-card-title: black;
   --color-gray: #3b444b;
   --color-primary: #f7444e;
 }
