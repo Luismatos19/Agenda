@@ -19,11 +19,18 @@
   html {
     font-size: 93.75%; /* 15px */
   }
+  #column-resgister {
+    border-right: 0.5px solid black;
+  }
 }
 
-@media (max-width: 970px) {
+@media (max-width: 990px) {
   html {
     font-size: 87.5%; /* 14px */
+  }
+
+  #column-resgister {
+    border-right: 0px;
   }
 }
 
