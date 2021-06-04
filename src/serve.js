@@ -4,9 +4,27 @@ const routes = require("./routes");
 const path = require("path");
 const cors = require("cors");
 const BodyParser = require("body-parser");
+const session = require("express-session");
+const flash = require("connect-flash");
+const helmet = require("helmet");
+const csrf = require("csurf");
+const { middlewareGlobal } = require("./middlewares/middleware");
 
 //usando template engine (ejs)
 server.set("view engine", "ejs");
+
+server.use(
+  session({
+    cookie: { maxAge: 60000 },
+    secret: "woot",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+server.use(flash());
+
+server.use(middlewareGlobal);
 
 //habilitar arquivos statics
 server.use(express.static("public"));

@@ -1,0 +1,37 @@
+h4 {
+  margin-bottom: 2rem;
+}
+
+/*-----------Register Column-----------*/
+#column-resgister {
+  border-right: 0.5px solid black;
+}
+
+/*---------Form Login ----------*/
+.form-login .input-wrapper {
+  width: 80%;
+  margin: 1rem auto;
+}
+
+/*---------Button login-----------*/
+
+.btn-primary,
+.btn-primary:active,
+.btn-primary:visited {
+  background-color: var(--color-primary);
+  border: none;
+  color: black;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background-color: black;
+  color: white;
+}
+
+.btn-login {
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
