@@ -5,21 +5,26 @@ module.exports = {
     return res.render("login");
   },
 
-  async register(req, res) {
-    const register = new Register(req.body);
+  async create(req, res) {
+    try {
+      const newRegister = new Register(req.body);
 
-    await register.register();
+      await newRegister.register();
 
-    // checar se ha erros se houver manda o usuario de volta para pagina de register
-    if (register.errors.length > 0) {
-      req.flash("errors", register.errors);
-      req.session.save(() => {
-        res.redirect("back");
-      });
+      // checar se ha erros se houver manda o usuario de volta para pagina de register
+      if (newRegister.errors.length > 0) {
+        req.flash("errors", newRegister.errors);
+        req.session.save(function () {
+          return res.redirect("back");
+        });
 
-      return;
+        return;
+      }
+
+      res.send(newRegister.body);
+    } catch (err) {
+      console.log(err);
+      return res.render("errorPage");
     }
-
-    res.send(register.body);
   },
 };

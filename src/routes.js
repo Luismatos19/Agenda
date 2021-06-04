@@ -9,7 +9,7 @@ routes.get("/", HomeController.index);
 
 //Login Routes
 routes.get("/login", LoginController.index);
-routes.post("/login/register", LoginController.register);
+routes.post("/login/register", LoginController.create);
 
 //Contact Routes
 routes.get("/contact", ContactController.create);
