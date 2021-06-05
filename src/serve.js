@@ -1,5 +1,22 @@
+require("dotenv").config();
+
 const express = require("express");
 const server = express();
+const mongoose = require("mongoose");
+
+//garante que o servidor so vai ser iniciado depois que se conctar a base de dados
+mongoose
+  .connect(process.env.CONECTIONSTRING, {
+    //CONECTIONSTRING guardado no dotenv
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Conectado ao banco de dados MongoDB");
+    server.emit("read"); // emite o sinal
+  })
+  .catch((err) => console.log(err));
+
 const routes = require("./routes");
 const path = require("path");
 const cors = require("cors");
@@ -15,7 +32,7 @@ server.set("view engine", "ejs");
 
 server.use(
   session({
-    cookie: { maxAge: 60000 },
+    cookie: { maxAge: 1000 * 60 * 60 * 24 * 7, httpOnly: true },
     secret: "woot",
     resave: false,
     saveUninitialized: false,
@@ -42,4 +59,8 @@ server.use(express.urlencoded({ extended: true }));
 //
 server.use(routes);
 
-server.listen(3000, () => console.log("rodando"));
+server.on("read", () => {
+  //serve incia apos o sinal emitido
+
+  server.listen(3000, () => console.log("rodando"));
+});

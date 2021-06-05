@@ -19,17 +19,23 @@
     "connect-flash": "^0.1.1",
     "cors": "^2.8.5",
     "csurf": "^1.11.0",
+    "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "helmet": "^4.6.0",
+    "mongoose": "^5.12.13",
+    "mongose": "0.0.2-security",
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.7",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "routes": "^2.1.0",
     "save": "^2.4.0",
     "sqlite": "^4.0.23",
     "sqlite3": "^5.0.2",
+    "toastify-js": "^1.11.0",
     "validator": "^13.6.0"
   }
 }

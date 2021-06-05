@@ -10,23 +10,39 @@ const initDb = {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT,
       email TEXT,
-      password TEXT
+      password TEXT,
+      contact_id INT,
+      FOREIGN KEY(contact_id) REFERENCES contact(id)
     );`);
 
     //criar table contatos
     await db.exec(` CREATE TABLE contact (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      name TEXT,
+      name TEXT NOT NULL,
       last_name TEXT,
-      phone TEXT,
+      category TEXT,
       email TEXT,
+      phone_id INT,
+      adress_id INT,
+      FOREIGN KEY(phone_id) REFERENCES phone(id),
+      FOREIGN KEY(adress_id) REFERENCES adress(id)
+      
+    );`);
+
+    await db.exec(` CREATE TABLE phone (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      area_code TEXT,
+      phone_number TEXT
+    );`);
+
+    await db.exec(` CREATE TABLE adress (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
       cep TEXT,
-      logradouto TEXT,
-      bairro TEXT,
-      nummero INTEGER,
+      postal_code TEXT,
+      district TEXT,
+      number INTEGER,
       city TEXT,
       state_uf TEXT
-      
     );`);
 
     await db.run(`
@@ -46,12 +62,12 @@ const initDb = {
       INSERT INTO contact (
         name,
         last_name,
-        phone
+        email
 
       ) VALUES (
         "Andre",
         "Matos",
-        "123456789"
+        "luis@gmail.com"
 
    ); `);
 
