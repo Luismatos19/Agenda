@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const Database = require("../db/config");
 const Validator = require("validator");
 const bcryptjs = require("bcryptjs");
 
@@ -10,7 +9,9 @@ const loginSchema = new mongoose.Schema({
   password: { type: String, required: true },
 });
 
-class Register {
+const loginModel = mongoose.model("Login", loginSchema);
+
+class Login {
   constructor(body) {
     this.body = body;
     this.errors = []; //flag de erros
@@ -19,18 +20,14 @@ class Register {
 
   //metodo para atutenticar
   async auth() {
-    const db = await Database();
-
     this.valid();
     if (this.errors.length > 0) return;
 
-    //checa se o email e consta no db
-    this.user = await db.get(`
-      SELECT email, password FROM user WHERE email = "${this.body.email}"
-    `);
+    //checa se o email  consta no db
+    this.user = await loginModel.findOne({ email: this.body.email });
 
     if (!this.user) {
-      this.errors.push("Email não cadastrado.");
+      this.errors.push("Usuário inválido.");
       return;
     }
 
@@ -56,9 +53,9 @@ class Register {
 
     // criptografa a senha usando bcryptjs (hash)
     const salt = bcryptjs.genSaltSync();
-    this.body.password = bcryptjs.hashSync(this.body.password);
+    this.body.password = bcryptjs.hashSync(this.body.password, salt);
 
-    this.user = await this.create(this.body);
+    this.user = await loginModel.create(this.body);
   }
 
   //metodo para validar usuario
@@ -91,32 +88,9 @@ class Register {
 
   //metodo checa se  o email do  usuario ja existe no banco de dados
   async userExist() {
-    const db = await Database();
-    const user = await db.get(`
-      SELECT email FROM user WHERE email = "${this.body.email}"
-    `);
-
-    if (user) this.errors.push("Email ultilizado ja existe.");
-
-    await db.close();
-  }
-
-  //metodo criar usuario no banco de dados
-  async create(newUser) {
-    const db = await Database();
-
-    await db.run(` INSERT INTO user (
-      name,
-      email,
-      password
-    ) Values (
-      "${newUser.name}",
-      "${newUser.email}",
-      "${newUser.password}"
-
-    )`);
-    await db.close();
+    const userExist = await loginModel.findOne({ email: this.body.email });
+    if (userExist) this.errors.push("Este email ja esta cadastrado.");
   }
 }
 
-module.exports = Register;
+module.exports = Login;
