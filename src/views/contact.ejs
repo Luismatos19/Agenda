@@ -2,82 +2,86 @@
 
   <div class="container">
     <div class="contents">
-      <form action="/" id="form-contact" method="POST">
+      <form action="/contact/register" id="form-contact" method="POST">
         <fieldset>
           <legend>Dados do Contato</legend>
           <div class="separator light"></div>
 
-          <div class="input-group">
-            <div class="input-wrapper">
-              <label for="name">Nome do Contato:</label>
-              <input type="text" id="name" name="name" />
+          <%- include('parts/messages'); %>
+
+            <div class="input-group">
+              <div class="input-wrapper">
+                <label for="name">Nome do Contato:</label>
+                <input type="text" id="name" name="name" />
+              </div>
+
+
+              <div class="input-wrapper">
+                <label for="last_name">Sobrenome:</label>
+                <input type="text" id="last-name" name="last-name" />
+              </div>
             </div>
 
+            <div class="input-group">
+              <div class="input-wrapper">
+                <label for="phone">Telefone:</label>
+                <input type="phone" id="phone" name="phone" />
+              </div>
 
-            <div class="input-wrapper">
-              <label for="daily-hours">Sobrenome:</label>
-              <input type="text" id="last-name" name="last-name" />
-            </div>
-          </div>
-
-          <div class="input-group">
-            <div class="input-wrapper">
-              <label for="total-hours">Telefone:</label>
-              <input type="phone" id="phone-number" name="phone-number" />
-            </div>
-
-            <div class="input-wrapper">
-              <label for="name">Email:</label>
-              <input type="email" id="email" name="email" />
-            </div>
-          </div>
-
-          <div class="addres">
-            <h3>Endereço</h3>
-          </div>
-
-          <div class="input-group">
-            <div class="input-wrapper">
-              <label for="cep">Cep</label>
-              <input type="text" id="cep" name="cep" />
+              <div class="input-wrapper">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" />
+              </div>
             </div>
 
-            <div class="input-wrapper">
-              <label for="logradouro">Rua:</label>
-              <input type="text" id="logradouro" name="logradouro" />
+            <div class="addres">
+              <h3>Endereço</h3>
             </div>
 
-            <div class="input-wrapper">
-              <label for="bairro">Bairro:</label>
-              <input type="text" id="bairro" name="bairro" />
-            </div>
+            <div class="input-group">
+              <div class="input-wrapper">
+                <label for="zipcode">Cep</label>
+                <input type="text" id="zipcode" name="zipcode" />
+              </div>
 
-            <div class="input-wrapper">
-              <label for="name">Numero:</label>
-              <input type="number" id="numero-casa" name="numero-casa" />
-            </div>
+              <div class="input-wrapper">
+                <label for="street">Rua:</label>
+                <input type="text" id="street" name="street" />
+              </div>
 
-            <div class="input-wrapper">
-              <label for="cidade">Cidade:</label>
-              <input type="text" id="cidade" name="cidade" />
-            </div>
+              <div class="input-wrapper">
+                <label for="district">Bairro:</label>
+                <input type="text" id="district" name="district" />
+              </div>
 
-            <div class="input-wrapper">
-              <label for="uf">UF:</label>
-              <input type="text" id="uf" name="uf" />
-            </div>
+              <div class="input-wrapper">
+                <label for="local">Numero:</label>
+                <input type="number" id="local" name="local" />
+              </div>
 
-          </div>
+              <div class="input-wrapper">
+                <label for="city">Cidade:</label>
+                <input type="text" id="city" name="city" />
+              </div>
+
+              <div class="input-wrapper">
+                <label for="state">UF:</label>
+                <input type="text" id="state" name="state" />
+              </div>
+
+            </div>
 
         </fieldset>
       </form>
 
-
+      <div class="btn-login">
+        <button form="form-contact" type="submit" class="btn btn-primary btn-lg">Salvar</button>
+      </div>
     </div>
   </div>
 
   <script type="text/javascript">
-    $("#cep").focusout(function () {
+    $("#zipcode").focusout(function () {
 
       $.ajax({
 
@@ -87,13 +91,13 @@
 
         success: function (resposta) {
 
-          $("#logradouro").val(resposta.logradouro);
+          $("#street").val(resposta.logradouro);
           $("#complemento").val(resposta.complemento);
-          $("#bairro").val(resposta.bairro);
-          $("#cidade").val(resposta.localidade);
-          $("#uf").val(resposta.uf);
+          $("#district").val(resposta.bairro);
+          $("#city").val(resposta.localidade);
+          $("#state").val(resposta.uf);
 
-          $("#numero").focus();
+          $("#local").focus();
         }
       });
     });
