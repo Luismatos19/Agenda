@@ -1,5 +1,9 @@
 module.exports = {
-  create(req, res) {
+  index(req, res) {
+    return res.render("contact");
+  },
+
+  async register(req, res) {
     return res.render("contact");
   },
 };

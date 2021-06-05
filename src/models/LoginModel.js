@@ -1,6 +1,14 @@
+const mongoose = require("mongoose");
 const Database = require("../db/config");
 const Validator = require("validator");
 const bcryptjs = require("bcryptjs");
+
+//login schema
+const loginSchema = new mongoose.Schema({
+  name: { type: String, require: true },
+  email: { type: String, required: true },
+  password: { type: String, required: true },
+});
 
 class Register {
   constructor(body) {
