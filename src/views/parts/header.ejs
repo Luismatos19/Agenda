@@ -33,14 +33,22 @@
   <header class="main-header">
     <div class="title">
       <div class="logotipo">
-        <img class="logo" src="/images/logo.png" alt="Logo" />
+        <img href="/" class="logo" src="/images/logo.png" alt="Logo" />
         <h1>
           <%= title %>
         </h1>
       </div>
       <div class="navbar">
-        <img src="/images/user.png" alt="User logo" class="user" />
-        <h2>Luis M.</h2>
+        <% if(user) { %>
+          <a href="/login/logout">
+            <h2>Sair</h2>
+          </a>
+
+          <% }else {%>
+            <a href="/login/index">
+              <h2>Entrar</h2>
+            </a>
+            <% }%>
       </div>
     </div>
     <div class="separator"></div>

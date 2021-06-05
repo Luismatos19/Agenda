@@ -8,8 +8,10 @@ const LoginController = require("./controllers/LoginController");
 routes.get("/", HomeController.index);
 
 //Login Routes
-routes.get("/login", LoginController.index);
+routes.get("/login/index", LoginController.index);
 routes.post("/login/register", LoginController.create);
+routes.post("/login/auth", LoginController.auth);
+routes.get("/login/logout", LoginController.logout);
 
 //Contact Routes
 routes.get("/contact", ContactController.create);

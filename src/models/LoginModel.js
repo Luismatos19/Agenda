@@ -9,6 +9,32 @@ class Register {
     this.user = null;
   }
 
+  //metodo para atutenticar
+  async auth() {
+    const db = await Database();
+
+    this.valid();
+    if (this.errors.length > 0) return;
+
+    //checa se o email e consta no db
+    this.user = await db.get(`
+      SELECT email, password FROM user WHERE email = "${this.body.email}"
+    `);
+
+    if (!this.user) {
+      this.errors.push("Email não cadastrado.");
+      return;
+    }
+
+    //compara a senha digitada com a senha criptografada no banco de dados
+    if (!bcryptjs.compareSync(this.body.password, this.user.password)) {
+      this.errors.push("Senha inválida.");
+      this.user = null;
+      return;
+    }
+    return;
+  }
+
   //metodo registro q vai ser chamado no controller
   async register() {
     this.valid();
@@ -20,28 +46,20 @@ class Register {
 
     if (this.errors.length > 0) return;
 
-    try {
-      // criptografa a senha usando bcryptjs (hash)
-      const salt = bcryptjs.genSaltSync();
-      this.body.password = bcryptjs.hashSync(this.body.password);
+    // criptografa a senha usando bcryptjs (hash)
+    const salt = bcryptjs.genSaltSync();
+    this.body.password = bcryptjs.hashSync(this.body.password);
 
-      this.user = await this.create(this.body);
-    } catch (err) {
-      console.log(err);
-    }
+    this.user = await this.create(this.body);
   }
 
   //metodo para validar usuario
   valid() {
     this.clean();
 
-    if (this.body.name.length < 4 || this.body.name.length > 30) {
-      this.errors.push("O campo nome precisa ter entre 4  e 30 caracteres.");
-    }
-
     // usa biblioteca validator para varicar o email
     if (!Validator.isEmail(this.body.email))
-      this.errors.push("Por favor digite um email válido");
+      this.errors.push("Por favor digite um email válido.");
 
     //valida senha
     if (this.body.password.length < 6 || this.body.password.length > 20) {
