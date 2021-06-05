@@ -2,81 +2,86 @@
 
   <div class="container">
     <div class="contents">
-      <form action="/contact/register" id="form-contact" method="POST">
-        <fieldset>
-          <legend>Dados do Contato</legend>
-          <div class="separator light"></div>
 
-          <%- include('parts/messages'); %>
+      <% if(contact._id) {%>
+        <form action="/contact/edit/ <%= contact._id %> " id="form-contact" method="POST">
+          <% } else { %>
+            <form action="/contact/register" id="form-contact" method="POST">
+              <% } %>
+                <fieldset>
+                  <legend>Dados do Contato</legend>
+                  <div class="separator light"></div>
 
-            <div class="input-group">
-              <div class="input-wrapper">
-                <label for="name">Nome do Contato:</label>
-                <input type="text" id="name" name="name" />
-              </div>
+                  <%- include('parts/messages'); %>
+
+                    <div class="input-group">
+                      <div class="input-wrapper">
+                        <label for="name">Nome do Contato:</label>
+                        <input type="text" id="name" name="name" />
+                      </div>
 
 
-              <div class="input-wrapper">
-                <label for="last_name">Sobrenome:</label>
-                <input type="text" id="last-name" name="last-name" />
-              </div>
+                      <div class="input-wrapper">
+                        <label for="last_name">Sobrenome:</label>
+                        <input type="text" id="last-name" name="last-name" />
+                      </div>
+                    </div>
+
+                    <div class="input-group">
+                      <div class="input-wrapper">
+                        <label for="phone">Telefone:</label>
+                        <input type="phone" id="phone" name="phone" />
+                      </div>
+
+                      <div class="input-wrapper">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" />
+                      </div>
+                    </div>
+
+                    <div class="addres">
+                      <h3>Endereço</h3>
+                    </div>
+
+                    <div class="input-group">
+                      <div class="input-wrapper">
+                        <label for="zipcode">Cep</label>
+                        <input type="text" id="zipcode" name="zipcode" />
+                      </div>
+
+                      <div class="input-wrapper">
+                        <label for="street">Rua:</label>
+                        <input type="text" id="street" name="street" />
+                      </div>
+
+                      <div class="input-wrapper">
+                        <label for="district">Bairro:</label>
+                        <input type="text" id="district" name="district" />
+                      </div>
+
+                      <div class="input-wrapper">
+                        <label for="local">Numero:</label>
+                        <input type="number" id="local" name="local" />
+                      </div>
+
+                      <div class="input-wrapper">
+                        <label for="city">Cidade:</label>
+                        <input type="text" id="city" name="city" />
+                      </div>
+
+                      <div class="input-wrapper">
+                        <label for="state">UF:</label>
+                        <input type="text" id="state" name="state" />
+                      </div>
+
+                    </div>
+
+                </fieldset>
+            </form>
+
+            <div class="btn-login">
+              <button form="form-contact" type="submit" class="btn btn-primary btn-lg">Salvar</button>
             </div>
-
-            <div class="input-group">
-              <div class="input-wrapper">
-                <label for="phone">Telefone:</label>
-                <input type="phone" id="phone" name="phone" />
-              </div>
-
-              <div class="input-wrapper">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" />
-              </div>
-            </div>
-
-            <div class="addres">
-              <h3>Endereço</h3>
-            </div>
-
-            <div class="input-group">
-              <div class="input-wrapper">
-                <label for="zipcode">Cep</label>
-                <input type="text" id="zipcode" name="zipcode" />
-              </div>
-
-              <div class="input-wrapper">
-                <label for="street">Rua:</label>
-                <input type="text" id="street" name="street" />
-              </div>
-
-              <div class="input-wrapper">
-                <label for="district">Bairro:</label>
-                <input type="text" id="district" name="district" />
-              </div>
-
-              <div class="input-wrapper">
-                <label for="local">Numero:</label>
-                <input type="number" id="local" name="local" />
-              </div>
-
-              <div class="input-wrapper">
-                <label for="city">Cidade:</label>
-                <input type="text" id="city" name="city" />
-              </div>
-
-              <div class="input-wrapper">
-                <label for="state">UF:</label>
-                <input type="text" id="state" name="state" />
-              </div>
-
-            </div>
-
-        </fieldset>
-      </form>
-
-      <div class="btn-login">
-        <button form="form-contact" type="submit" class="btn btn-primary btn-lg">Salvar</button>
-      </div>
     </div>
   </div>
 

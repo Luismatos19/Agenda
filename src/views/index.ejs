@@ -27,94 +27,42 @@
     </div>
 
     <section class="cards">
-      <div class="card border-dark mb-2" id="card-content">
-        <div class="card-nome">
-          <div class="avatar">
-            <h1>L</h1>
-          </div>
-          <div>
-            <h2>Luis Matos</h2>
-          </div>
-        </div>
-        <div class="category">
-          <p>Categoria</p>
-          <h4>Amigos</h4>
-        </div>
-        <div class="actions">
-          <div style="font-size: 1.5rem;">
-            <i class="bi bi-trash"></i>
-            <i class="bi bi-pencil-square"></i>
-            <i class="bi bi-star"></i>
-          </div>
-        </div>
-      </div>
 
-      <div class="card border-dark mb-2" id="card-content">
-        <div class="card-nome">
-          <div class="avatar">
-            <h1>L</h1>
+      <% contacts.forEach(contact=> { %>
+        <div class="card border-dark mb-2" id="card-content">
+          <div class="card-nome">
+            <div class="avatar">
+              <h1>
+                <%= contact.name[0].toUpperCase() %>
+              </h1>
+            </div>
+            <div>
+              <h2>
+                <%= contact.name %>
+              </h2>
+            </div>
           </div>
-          <div>
-            <h2>Luis Matos</h2>
+          <div class="category">
+            <p>Categoria</p>
+            <h4>
+              <%= contact.category %>
+            </h4>
+          </div>
+          <div class="actions">
+            <div style="font-size: 1.5rem;">
+              <a href="/contact/delete">
+                <i class="bi bi-trash"></i>
+              </a>
+              <a href="/contact/index/<%= contact._id %>">
+                <i class="bi bi-pencil-square"></i>
+              </a>
+              <i class="bi bi-star"></i>
+            </div>
           </div>
         </div>
-        <div class="category">
-          <p>Categoria</p>
-          <h4>Trabalho</h4>
-        </div>
-        <div class="actions">
-          <div style="font-size: 1.5rem;">
-            <i class="bi bi-trash"></i>
-            <i class="bi bi-pencil-square"></i>
-            <i class="bi bi-star"></i>
-          </div>
-        </div>
+        <% }); %>
 
-      </div>
 
-      <div class="card border-dark mb-2" id="card-content">
-        <div class="card-nome">
-          <div class="avatar">
-            <h1>L</h1>
-          </div>
-          <div>
-            <h2>Luis Matos</h2>
-          </div>
-        </div>
-        <div class="category">
-          <p>Categoria</p>
-          <h4>Familia</h4>
-        </div>
-        <div class="actions">
-          <div style="font-size: 1.5rem;">
-            <i class="bi bi-trash"></i>
-            <i class="bi bi-pencil-square"></i>
-            <i class="bi bi-star"></i>
-          </div>
-        </div>
-      </div>
-
-      <div class="card border-dark mb-2" id="card-content">
-        <div class="card-nome">
-          <div class="avatar">
-            <h1>L</h1>
-          </div>
-          <div>
-            <h2>Luis Matos</h2>
-          </div>
-        </div>
-        <div class="category">
-          <p>Categoria</p>
-          <h4>Familia</h4>
-        </div>
-        <div class="actions">
-          <div style="font-size: 1.5rem;">
-            <i class="bi bi-trash bi-4x"></i>
-            <i class="bi bi-pencil-square"></i>
-            <i class="bi bi-star"></i>
-          </div>
-        </div>
-      </div>
 
     </section>
 
