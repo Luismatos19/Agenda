@@ -1,7 +1,10 @@
 <%- include("parts/header", {title: 'Agenda de contatos' }) %>
 
 
+
   <div class="container">
+
+
 
 
 
@@ -21,66 +24,54 @@
 
     </div>
 
-    <section class="cards">
 
+
+
+
+
+    <div class="cards">
       <% contacts.forEach(contact=> { %>
-        <article class="clickablecard">
-          <h2><a href="https://example.com/" class="cardmainlink"></a></h2>
-          <div class="card border-dark mb-2" id="card-content">
-            <div class="card-nome">
-              <div class="avatar">
-                <h1>
-                  <%= contact.name[0].toUpperCase() %>
-                </h1>
+
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-10">
+            <div class="card p-3 py-4 card-content">
+              <div class="text-center"> <img src="https://i.imgur.com/bDLhJiP.jpg" width="100" class="rounded-circle">
               </div>
-              <div class="full-name">
-
-                <h3>
-                  <%= contact.name %>
-                </h3>
-
-
-              </div>
-            </div>
-            <div class="category">
-              <p>Categoria</p>
-              <h4>
-                <%= contact.category %>
-              </h4>
-            </div>
-            <div class="actions">
-              <div style="font-size: 1.5rem;">
-                <a href="/contact/delete/<%= contact._id %>">
-                  <i class="bi bi-trash"></i>
-                </a>
-                <a href="/contact/index/<%= contact._id %>">
-                  <i class="bi bi-pencil-square"></i>
-                </a>
-
+              <div class="text-center mt-3"> <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
+                <h5 class="mt-2 mb-0">Alexender Schidmt</h5> <span>UI/UX Designer</span>
+                <div class="px-4 mt-1">
+                  <p class="fonts">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                    magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                    commodo
+                    consequat. </p>
+                </div>
+                <ul class="social-list">
+                  <li><i class="fa fa-facebook"></i></li>
+                  <li><i class="fa fa-dribbble"></i></li>
+                  <li><i class="fa fa-instagram"></i></li>
+                  <li><i class="fa fa-linkedin"></i></li>
+                  <li><i class="fa fa-google"></i></li>
+                </ul>
+                <div class="buttons"> <button class="btn btn-outline-primary px-4">Message</button> <button
+                    class="btn btn-primary px-4 ms-3">Contact</button> </div>
               </div>
             </div>
           </div>
-        </article>
+        </div>
+
+
         <% }); %>
 
-          <a href="#" onclick="Modal.open()" class="button new">+ Nova Transação</a>
 
-    </section>
+    </div>
 
   </div>
 
-  <%- include("parts/modal")%>
 
-    <script src="/scripts/modal.js"></script>
 
-    <script type="text/javascript">
-      var cards = document.querySelectorAll(".clickablecard");
-      for (var i = 0; i < cards.length; i++) {
-        cards[i].addEventListener('click', function (e) {
-          var link = this.querySelector(".cardmainlink");
-          link.click();
-        }, false);
-      }
-    </script>
 
-    <%- include("parts/footer") %>
+
+
+
+  <%- include("parts/footer") %>

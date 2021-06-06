@@ -7,7 +7,8 @@ const LoginController = require("./controllers/LoginController");
 const { loginRequired } = require("./middlewares/middleware");
 
 //Rotas home
-routes.get("/", loginRequired, HomeController.index);
+routes.get("/", HomeController.index);
+routes.get("/home/find/:id", HomeController.find);
 
 //Rotas login
 routes.get("/login/index", LoginController.index);
