@@ -37,9 +37,9 @@
               </h1>
             </div>
             <div>
-              <h2>
+              <h4>
                 <%= contact.name %>
-              </h2>
+              </h4>
             </div>
           </div>
           <div class="category">
@@ -50,7 +50,7 @@
           </div>
           <div class="actions">
             <div style="font-size: 1.5rem;">
-              <a href="/contact/delete">
+              <a href="/contact/delete/<%= contact._id %>">
                 <i class="bi bi-trash"></i>
               </a>
               <a href="/contact/index/<%= contact._id %>">

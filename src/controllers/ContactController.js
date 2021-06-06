@@ -26,31 +26,45 @@ module.exports = {
 
   // busca pelo contato para mostrar as informaçoes
   async editIndex(req, res) {
-    if (!res.params.id) return res.render("index"); // manda para home se nao houver id na req
+    if (!req.params.id) return res.render("errorPage"); // manda para home se nao houver id na req
 
     const contact = await Contact.findById(req.params.id);
     if (!contact) return res.render("errorPage");
 
-    res.render("contact", { contact });
+    res.render("contact", { contact: contact });
   },
 
   async edit(req, res) {
+    if (!req.params.id) return res.render("errorPage");
     try {
-      if (!req.params.id) return res.render("errorPage");
       const contact = new Contact(req.body);
       await contact.edit(req.params.id);
 
       if (contact.errors.length > 0) {
         req.flash("errors", contact.errors);
         req.session.save(() => res.redirect("back"));
+
         return;
       }
       req.flash("success", "Contato editado com sucesso");
-      req.session.save(() => res.render("index")); //manda para home no caso de sucesso
+      req.session.save(() =>
+        res.redirect(`/contact/index/${contact.contact._id}`)
+      ); //manda para home no caso de sucesso
       return;
     } catch (err) {
       console.log(err);
-      return res.redirect("back");
+      return res.redirect("errorPage");
     }
+  },
+
+  async delete(req, res) {
+    if (!req.params.id) return res.render("errorPage");
+
+    const contact = await Contact.delete(req.params.id);
+    if (!contact) return res.render("errorPage");
+
+    req.flash("success", "Contato excluido com sucesso");
+    req.session.save(() => res.redirect("back")); //manda para home no caso de sucesso
+    return;
   },
 };

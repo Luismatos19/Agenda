@@ -78,16 +78,16 @@ function Contact(body) {
     if (this.errors.length > 0) return;
 
     //busca pelo id e da um update
-    this.contact = await ContactModel.findByIdAndUpdate(id, this.body, {
+    this.contact = await contactModel.findByIdAndUpdate(id, this.body, {
       new: true,
     }); // new retorna novo dado atualizado
   };
 }
 
 //busca pelo id
-Contact.findByID = async function (id) {
+Contact.findById = async function (id) {
   if (typeof id !== "string") return;
-  const contact = await ContactModel.findById(id);
+  const contact = await contactModel.findById(id);
   return contact;
 };
 
@@ -95,6 +95,15 @@ Contact.findByID = async function (id) {
 Contact.findContacts = async function () {
   const contacts = await contactModel.find();
   return contacts;
+};
+
+//deleta contatos
+
+Contact.delete = async function (id) {
+  if (typeof id !== "string") return;
+
+  const contact = await contactModel.findOneAndDelete({ _id: id });
+  return contact;
 };
 
 module.exports = Contact;

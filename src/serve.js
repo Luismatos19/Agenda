@@ -10,6 +10,7 @@ mongoose
     //CONECTIONSTRING guardado no dotenv
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
   })
   .then(() => {
     console.log("Conectado ao banco de dados MongoDB");
