@@ -5,13 +5,15 @@
   box-sizing: border-box;
 }
 
-/* custom vars */
+/* custom vars #e1f5fe*/
 :root {
-  --color-background: #e1f5fe;
+  --color-background: #e0e0e0;
   --color-text: black;
+  --color-black: black;
+  --color-white: white;
   --color-card-title: black;
   --color-gray: #3b444b;
-  --color-primary: #f7444e;
+  --color-primary: #ee5a6f;
 }
 
 /* user-agent font-size is 16px */
@@ -48,10 +50,6 @@
 
 body {
   background: var(--color-background);
-}
-
-a {
-  text-decoration: none;
 }
 
 /* basic classes */

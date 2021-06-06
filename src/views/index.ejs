@@ -10,11 +10,6 @@
       <div class="search">
         <input type="text" class="contact" id="search-contat" placeholder="Buscar um contato">
 
-        <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2.5rem" fill="currentColor" class="bi bi-search"
-          viewBox="0 0 16 16" color="black">
-          <path
-            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-        </svg>
       </div>
 
       <a class="button gray" href="/contact/index">
@@ -27,98 +22,65 @@
     </div>
 
     <section class="cards">
-      <div class="card border-dark mb-2" id="card-content">
-        <div class="card-nome">
-          <div class="avatar">
-            <h1>L</h1>
-          </div>
-          <div>
-            <h2>Luis Matos</h2>
-          </div>
-        </div>
-        <div class="category">
-          <p>Categoria</p>
-          <h4>Amigos</h4>
-        </div>
-        <div class="actions">
-          <div style="font-size: 1.5rem;">
-            <i class="bi bi-trash"></i>
-            <i class="bi bi-pencil-square"></i>
-            <i class="bi bi-star"></i>
-          </div>
-        </div>
-      </div>
 
-      <div class="card border-dark mb-2" id="card-content">
-        <div class="card-nome">
-          <div class="avatar">
-            <h1>L</h1>
-          </div>
-          <div>
-            <h2>Luis Matos</h2>
-          </div>
-        </div>
-        <div class="category">
-          <p>Categoria</p>
-          <h4>Trabalho</h4>
-        </div>
-        <div class="actions">
-          <div style="font-size: 1.5rem;">
-            <i class="bi bi-trash"></i>
-            <i class="bi bi-pencil-square"></i>
-            <i class="bi bi-star"></i>
-          </div>
-        </div>
+      <% contacts.forEach(contact=> { %>
+        <article class="clickablecard">
+          <h2><a href="https://example.com/" class="cardmainlink"></a></h2>
+          <div class="card border-dark mb-2" id="card-content">
+            <div class="card-nome">
+              <div class="avatar">
+                <h1>
+                  <%= contact.name[0].toUpperCase() %>
+                </h1>
+              </div>
+              <div class="full-name">
 
-      </div>
+                <h3>
+                  <%= contact.name %>
+                </h3>
 
-      <div class="card border-dark mb-2" id="card-content">
-        <div class="card-nome">
-          <div class="avatar">
-            <h1>L</h1>
-          </div>
-          <div>
-            <h2>Luis Matos</h2>
-          </div>
-        </div>
-        <div class="category">
-          <p>Categoria</p>
-          <h4>Familia</h4>
-        </div>
-        <div class="actions">
-          <div style="font-size: 1.5rem;">
-            <i class="bi bi-trash"></i>
-            <i class="bi bi-pencil-square"></i>
-            <i class="bi bi-star"></i>
-          </div>
-        </div>
-      </div>
 
-      <div class="card border-dark mb-2" id="card-content">
-        <div class="card-nome">
-          <div class="avatar">
-            <h1>L</h1>
+              </div>
+            </div>
+            <div class="category">
+              <p>Categoria</p>
+              <h4>
+                <%= contact.category %>
+              </h4>
+            </div>
+            <div class="actions">
+              <div style="font-size: 1.5rem;">
+                <a href="/contact/delete/<%= contact._id %>">
+                  <i class="bi bi-trash"></i>
+                </a>
+                <a href="/contact/index/<%= contact._id %>">
+                  <i class="bi bi-pencil-square"></i>
+                </a>
+
+              </div>
+            </div>
           </div>
-          <div>
-            <h2>Luis Matos</h2>
-          </div>
-        </div>
-        <div class="category">
-          <p>Categoria</p>
-          <h4>Familia</h4>
-        </div>
-        <div class="actions">
-          <div style="font-size: 1.5rem;">
-            <i class="bi bi-trash bi-4x"></i>
-            <i class="bi bi-pencil-square"></i>
-            <i class="bi bi-star"></i>
-          </div>
-        </div>
-      </div>
+        </article>
+        <% }); %>
+
+          <a href="#" onclick="Modal.open()" class="button new">+ Nova Transação</a>
 
     </section>
 
   </div>
-  </div>
 
-  <%- include("parts/footer") %>
+  <%- include("parts/modal")%>
+
+    <script src="/scripts/modal.js"></script>
+
+    <script type="text/javascript">
+      var cards = document.querySelectorAll(".clickablecard");
+      for (var i = 0; i < cards.length; i++) {
+        cards[i].addEventListener('click', function (e) {
+          var link = this.querySelector(".cardmainlink");
+          link.click();
+        }, false);
+      }
+    </script>
+
+    <%- include("parts/footer") %>

@@ -6,8 +6,8 @@ const contactSchema = new mongoose.Schema({
   last_name: { type: String, required: false, default: "" },
   email: { type: String, required: false, default: "" },
   category: { type: String, required: false, default: "" },
-  phone: { type: String, required: false, default: "" },
-  adress: { type: String, required: false, default: "" },
+  phone: { type: Array, required: false, default: "" },
+  adress: { type: Array, required: false, default: "" },
 });
 
 const contactModel = mongoose.model("Contato", contactSchema);
@@ -17,10 +17,12 @@ function Contact(body) {
   this.errors = [];
   this.contact = null;
 
+  //registra o contato
   Contact.prototype.register = async function () {
     this.valid();
 
     if (this.errors.length > 0) return;
+
     this.contact = await contactModel.create(this.body);
   };
   //metodo para validar usuario
@@ -53,10 +55,54 @@ function Contact(body) {
       email: this.body.email,
       category: this.body.category,
       phone: this.body.phone,
-      adress: this.body.adress,
+      adress: [
+        {
+          street: this.body.street,
+          local: this.body.local,
+          zipcode: this.body.zipcode,
+          district: this.body.district,
+          city: this.body.city,
+          state: this.body.state,
+        },
+      ],
       password: this.body.password,
     };
   };
+
+  Contact.prototype.edit = async function (id) {
+    if (typeof id !== "string") return;
+
+    this.valid();
+
+    if (this.errors.length > 0) return;
+
+    //busca pelo id e da um update
+    this.contact = await contactModel.findByIdAndUpdate(id, this.body, {
+      new: true,
+    }); // new retorna novo dado atualizado
+  };
 }
+
+//busca pelo id
+Contact.findById = async function (id) {
+  if (typeof id !== "string") return;
+  const contact = await contactModel.findById(id);
+  return contact;
+};
+
+//busca todos os contatos
+Contact.findContacts = async function () {
+  const contacts = await contactModel.find();
+  return contacts;
+};
+
+//deleta contatos
+
+Contact.delete = async function (id) {
+  if (typeof id !== "string") return;
+
+  const contact = await contactModel.findOneAndDelete({ _id: id });
+  return contact;
+};
 
 module.exports = Contact;

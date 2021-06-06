@@ -1,6 +1,13 @@
 /* -------------Header ---------------------*/
 .main-header {
-  background: var(--color-primary);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#f29263),
+    to(#ee5a6f)
+  );
+  background: linear-gradient(to right, #ee5a6f, #f29263);
   width: 100vw;
   height: 20rem;
   padding-top: 1rem;
@@ -38,4 +45,12 @@
   height: 1px;
   background-color: var(--color-gray);
   margin: 1rem 0px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-black);
+}
+a:hover {
+  color: var(--color-white);
 }

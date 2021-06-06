@@ -55,7 +55,7 @@ module.exports = {
       req.flash("success", "Login efetuado com sucesso.");
       req.session.user = login.user; // guarda o usuario na sessão
       req.session.save(function () {
-        return res.redirect("index");
+        return res.redirect("/");
       });
     } catch (err) {
       console.log(err);

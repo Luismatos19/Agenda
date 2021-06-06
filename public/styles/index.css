@@ -11,8 +11,22 @@ input {
   margin-top: -10rem;
   color: white;
   display: flex;
+  height: 3rem;
   align-items: center;
   justify-content: space-between;
+}
+
+/* -------------Search input---------------------*/
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 2rem;
+}
+
+.contact {
+  width: 16rem;
+  height: 100%;
 }
 
 /* -------------Content---------------------*/
@@ -29,10 +43,19 @@ input {
   background-color: var(--color-background);
 }
 
+.cards .card {
+  border: none;
+}
+
+.cards .card:hover {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
 .card-section {
   margin-top: 0.5rem;
 }
 
+/* -------------Card Content---------------------*/
 #card-content {
   display: flex;
   flex-direction: row;
@@ -41,6 +64,7 @@ input {
 }
 
 .card-nome {
+  width: 35%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -56,8 +80,44 @@ input {
   border-radius: 2.5rem;
   font-size: 1rem;
   padding: 5px;
+  border: 0.75px solid black;
 }
 
+.full-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* -------------Card Clikcavel---------------------*/
+.clickablecard:hover {
+  cursor: pointer;
+}
+
+.clickablecard:hover p {
+  color: #00d;
+}
+
+.clickablecard:hover p a {
+  color: #000;
+}
+
+article h2 a:hover,
+article h2 a:focus,
+.clickablecard:hover .cardmainlink {
+  text-decoration: underline;
+  text-decoration-skip: ink;
+  text-decoration-skip-ink: auto;
+  color: #00d;
+}
+
+article a:hover img,
+article a:focus img,
+.clickablecard:hover img {
+  transform: scale(1.2);
+}
+
+/* ------------- Card icons---------------------*/
 .actions {
   color: var(--color-primary);
   margin-right: 1rem;
@@ -72,6 +132,11 @@ input {
   color: black;
 }
 
+.actions a {
+  color: var(--color-primary);
+}
+
+/* -------------Avatar Card---------------------*/
 .avatar {
   width: 5rem;
   height: 5rem;
@@ -82,5 +147,5 @@ input {
   justify-content: center;
   margin: 0.5rem 0.5rem;
 
-  border: none;
+  border: 0.75px solid black;
 }
