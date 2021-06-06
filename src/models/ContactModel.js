@@ -55,7 +55,6 @@ function Contact(body) {
       email: this.body.email,
       category: this.body.category,
       phone: this.body.phone,
-      //adress: this.body.adress,
       adress: [
         {
           street: this.body.street,
