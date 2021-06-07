@@ -1,6 +1,7 @@
 <%- include("parts/header", {title: 'Agenda de contatos' }) %>
 
 
+
   <div class="container">
 
 
@@ -8,8 +9,8 @@
     <div class="sumary">
 
       <div class="search">
-        <input type="text" class="contact" id="search-contat" placeholder="Buscar um contato">
-
+        <input type="text" onkeypress="find()" class="contact" id="search-contat" placeholder="Buscar um contato">
+        <input type="text" class="contact" id="search-contat2" placeholder="Buscar um contato">
       </div>
 
       <a class="button gray" href="/contact/index">
@@ -25,7 +26,7 @@
 
       <% contacts.forEach(contact=> { %>
         <article class="clickablecard">
-          <h2><a href="https://example.com/" class="cardmainlink"></a></h2>
+          <h2><a href="/modal/<%= contact._id %>" class="cardmainlink"></a></h2>
           <div class="card border-dark mb-2" id="card-content">
             <div class="card-nome">
               <div class="avatar">
@@ -63,24 +64,61 @@
         </article>
         <% }); %>
 
-          <a href="#" onclick="Modal.open()" class="button new">+ Nova Transação</a>
+
 
     </section>
 
   </div>
 
-  <%- include("parts/modal")%>
 
-    <script src="/scripts/modal.js"></script>
 
-    <script type="text/javascript">
-      var cards = document.querySelectorAll(".clickablecard");
-      for (var i = 0; i < cards.length; i++) {
-        cards[i].addEventListener('click', function (e) {
-          var link = this.querySelector(".cardmainlink");
-          link.click();
-        }, false);
-      }
-    </script>
 
-    <%- include("parts/footer") %>
+  </script>
+
+  <script type="text/javascript">
+    var cards = document.querySelectorAll(".clickablecard");
+    for (var i = 0; i < cards.length; i++) {
+      cards[i].addEventListener('click', function (e) {
+        var link = this.querySelector(".cardmainlink");
+        link.click();
+      }, false);
+    }
+  </script>
+
+
+
+  <script>
+    $(document).ready(function () {
+      $("button").click(function () {
+        $.get("demo_test.asp", function (data, status) {
+          alert("Data: " + data + "\nStatus: " + status);
+        });
+      });
+    });
+  </script>
+
+  <script>
+
+    //   $.ajax({
+    //     url: "https://viacep.com.br/ws/" + $(this).val() + "/json/unicode/",
+
+    //     dataType: "json",
+
+    //     success: function (resposta) {
+    //       $("#street").val(resposta.logradouro);
+    //       $("#complemento").val(resposta.complemento);
+    //       $("#district").val(resposta.bairro);
+    //       $("#city").val(resposta.localidade);
+    //       $("#state").val(resposta.uf);
+
+    //       $("#local").focus();
+    //     },
+    //   });
+    // });
+
+  </script>
+
+
+
+
+  <%- include("parts/footer") %>

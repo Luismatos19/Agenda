@@ -7,7 +7,7 @@ const contactSchema = new mongoose.Schema({
   email: { type: String, required: false, default: "" },
   category: { type: String, required: false, default: "" },
   phone: { type: Array, required: false, default: "" },
-  adress: { type: Array, required: false, default: "" },
+  adress: { type: Object, required: false, default: "" },
 });
 
 const contactModel = mongoose.model("Contato", contactSchema);
@@ -55,16 +55,15 @@ function Contact(body) {
       email: this.body.email,
       category: this.body.category,
       phone: this.body.phone,
-      adress: [
-        {
-          street: this.body.street,
-          local: this.body.local,
-          zipcode: this.body.zipcode,
-          district: this.body.district,
-          city: this.body.city,
-          state: this.body.state,
-        },
-      ],
+      adress: {
+        street: this.body.street,
+        local: this.body.local,
+        zipcode: this.body.zipcode,
+        district: this.body.district,
+        city: this.body.city,
+        state: this.body.state,
+      },
+
       password: this.body.password,
     };
   };
@@ -88,6 +87,14 @@ Contact.findById = async function (id) {
   if (typeof id !== "string") return;
   const contact = await contactModel.findById(id);
   return contact;
+};
+
+//busca pelo nome
+Contact.findName = async function (data) {
+  const regex = new RegExp(`${data}`, "i");
+  const names = await contactModel.find({ name: regex });
+
+  return names;
 };
 
 //busca todos os contatos
