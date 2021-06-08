@@ -80,8 +80,8 @@ module.exports = {
   },
 
   async find(req, res) {
-    const find = await Contact.findName(req.params.value);
+    const contacts = await Contact.findName(req.params.name);
 
-    return find;
+    return res.render("index", { contacts });
   },
 };

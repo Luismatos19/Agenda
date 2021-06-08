@@ -9,7 +9,7 @@ const { loginRequired } = require("./middlewares/middleware");
 //Rotas home
 routes.get("/", HomeController.index);
 routes.get("/modal/:id", ContactController.modal);
-routes.get("/find/:value", ContactController.find);
+routes.get("/find/:name", ContactController.find);
 
 //Rotas login
 routes.get("/login/index", LoginController.index);
