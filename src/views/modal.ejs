@@ -1,5 +1,8 @@
+<!--  Pagina carrega informaçoes do contato-->
+
 <%- include("parts/header", {title: 'Agenda de contatos' }) %>
 
+  <!--  Modal bootstrap-->
   <div class="modal-overlay active">
     <div class="modal-contact">
       <div class="page-content page-container" id="page-content">
@@ -11,16 +14,24 @@
                   <div class="col-sm-4 bg-c-lite-green user-profile">
                     <div class="card-block text-center text-white">
                       <div class="m-b-25 modal-avatar">
+                        <!--  Profine nome e avatar-->
                         <div class="avatar">
                           <h1>
                             <%= contact.name[0].toUpperCase() %>
                           </h1>
                         </div>
                       </div>
-                      <h6 class="f-w-600">
-                        <%= contact.name %>
-                      </h6>
-                      <p>Web Designer</p>
+                      <h5>
+                        <%= contact.name[0].toUpperCase() + contact.name.substr(1) %>
+
+                      </h5>
+                      <h5>
+                        <%= contact.last_name %>
+                      </h5>
+                      <p>
+                        <%= contact.category %>
+                      </p>
+                      <!-- Botão volta para a home-->
                       <div class="btn-login">
                         <a href="/">
                           <button class="btn btn-primary btn-lg">Voltar</button>
@@ -28,6 +39,7 @@
                       </div>
                     </div>
                   </div>
+                  <!-- Seção com endereços-->
                   <div class="col-sm-8">
                     <div class="card-block">
                       <h6 class="m-b-20 p-b-5 b-b-default f-w-600 ">Information

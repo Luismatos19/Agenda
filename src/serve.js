@@ -1,8 +1,13 @@
 require("dotenv").config();
 
-const express = require("express");
-const server = express();
 const mongoose = require("mongoose");
+const express = require("express");
+const session = require("express-session");
+const flash = require("connect-flash");
+const { middlewareGlobal } = require("./middlewares/middleware");
+const routes = require("./routes");
+const path = require("path");
+const server = express();
 
 //garante que o servidor so vai ser iniciado depois que se conctar a base de dados
 mongoose
@@ -17,16 +22,6 @@ mongoose
     server.emit("read"); // emite o sinal
   })
   .catch((err) => console.log(err));
-
-const routes = require("./routes");
-const path = require("path");
-const cors = require("cors");
-const BodyParser = require("body-parser");
-const session = require("express-session");
-const flash = require("connect-flash");
-const helmet = require("helmet");
-const csrf = require("csurf");
-const { middlewareGlobal } = require("./middlewares/middleware");
 
 //usando template engine (ejs)
 server.set("view engine", "ejs");
@@ -50,12 +45,7 @@ server.use(express.static("public"));
 //localização da pasta views
 server.set("views", path.join(__dirname, "views"));
 
-//usar red body
-
 server.use(express.urlencoded({ extended: true }));
-
-//server.use(cors());
-//let urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 //
 server.use(routes);

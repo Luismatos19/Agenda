@@ -1,45 +1,52 @@
+<!--   Pagina usada tanto para candastrat contato quanto para editart contato  -->
 <%- include("parts/header", {title: 'Agenda de contatos' }) %>
 
+  <!--     -->
   <div class="container">
     <div class="contents">
 
+      <!--   If  para mudar o cabeçalho do form (caso tenha o id na rota) -->
       <% if(contact._id) {%>
-        <form action="/contact/edit/<%= contact._id %>" id="form-contact" method="POST">
+        <!--   Form cadastro  -->
+        <form action="/contact/edit/<%= contact._id %>" class="form-contact" id="form-contact" method="POST">
           <% } else { %>
-            <form action="/contact/register" id="form-contact" method="POST">
+            <!--   Form edit  -->
+            <form action="/contact/register" class="" id="form-contact" method="POST">
               <% } %>
                 <fieldset>
+                  <!--   Titulo  -->
                   <legend>Dados do Contato</legend>
                   <div class="separator light"></div>
 
+                  <!--   Menssagens de erro/sucesso  -->
                   <%- include('parts/messages'); %>
 
-                    <div class="input-group">
+                    <div class="input-group form-group">
                       <div class="input-wrapper">
                         <label for="name">Nome do Contato:</label>
                         <input value="<%= contact.name %>" type="text" id="name" name="name" />
                       </div>
 
 
-                      <div class="input-wrapper">
+                      <div class="input-wrapper form-group">
                         <label for="last_name">Sobrenome:</label>
-                        <input value="<%= contact.last_name %>" type="text" id="last-name" name="last-name" />
+                        <input value="<%= contact.last_name %>" type="text" id="last_name" name="last_name" />
                       </div>
                     </div>
 
-                    <div class="input-group">
+                    <div class="input-group form-group">
                       <div class="input-wrapper">
                         <label for="phone">Telefone:</label>
                         <input value="<%= contact.phone %>" type="phone" id="phone" name="phone" />
                       </div>
 
-                      <div class="input-wrapper">
+                      <div class="input-wrapper form-group">
                         <label for="email">Email:</label>
                         <input value="<%= contact.email %>" type="email" id="email" name="email" />
                       </div>
                     </div>
 
-                    <div class="input-group">
+                    <div class="input-group form-group">
                       <div class="input-wrapper">
                         <label for="category">Categoria:</label>
                         <input value="<%= contact.category %>" type="text" id="category" name="category" />
@@ -51,27 +58,27 @@
                       <h3>Endereço</h3>
                     </div>
 
-                    <div class="input-group">
+                    <div class="input-group form-group">
                       <div class="input-wrapper">
                         <label for="zipcode">Cep</label>
                         <input value="<%= contact.zipcode %>" type="text" id="zipcode" name="zipcode" />
                       </div>
 
-                      <div class="input-wrapper">
+                      <div class="input-wrapper form-group">
                         <label for="street">Rua:</label>
                         <input value="<%= contact.street %>" type="text" id="street" name="street" />
                       </div>
 
                     </div>
 
-                    <div class="input-group">
+                    <div class="input-group form-group">
 
                       <div class="input-wrapper">
                         <label for="district">Bairro:</label>
                         <input value="<%= contact.district %>" type="text" id="district" name="district" />
                       </div>
 
-                      <div class="input-wrapper">
+                      <div class="input-wrapper form-group">
                         <label for="local">Numero:</label>
                         <input value="<%= contact.local %>" type="number" id="local" name="local" />
                       </div>
@@ -80,12 +87,12 @@
 
                     <div class="input-group">
 
-                      <div class="input-wrapper">
+                      <div class="input-wrapper form-group">
                         <label for="city">Cidade:</label>
                         <input value="<%= contact.city %>" type="text" id="city" name="city" />
                       </div>
 
-                      <div class="input-wrapper">
+                      <div class="input-wrapper form-group">
                         <label for="state">UF:</label>
                         <input value="<%= contact.state %>" type="text" id="state" name="state" />
                       </div>
@@ -97,14 +104,14 @@
                 </fieldset>
             </form>
 
+            <!--   Botão form  -->
             <div class="btn-login">
               <button form="form-contact" type="submit" class="btn btn-primary btn-lg">Salvar</button>
             </div>
     </div>
   </div>
 
-  <script src="/scripts/findZipecode.js" type="text/javascript">
-
-  </script>
+  <!--   Script busca cep  -->
+  <script src="/scripts/findZipecode.js" type="text/javascript"></script>
 
   <%- include("parts/footer") %>

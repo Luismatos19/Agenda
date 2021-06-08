@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon .",
     "init-db": "node src/db/init.js",
-    "test": "test"
+    "test": "test",
+    "gera": "webpack -w"
   },
   "author": "Luis",
   "license": "ISC",
@@ -17,6 +18,7 @@
     "bootstrap": "^5.0.1",
     "bootstrap-icons": "^1.5.0",
     "connect-flash": "^0.1.1",
+    "core-js": "^3.14.0",
     "cors": "^2.8.5",
     "csurf": "^1.11.0",
     "dotenv": "^10.0.0",
@@ -32,11 +34,20 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
+    "regenerator-runtime": "^0.13.7",
     "routes": "^2.1.0",
     "save": "^2.4.0",
     "sqlite": "^4.0.23",
     "sqlite3": "^5.0.2",
     "toastify-js": "^1.11.0",
     "validator": "^13.6.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.3",
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.2"
   }
 }

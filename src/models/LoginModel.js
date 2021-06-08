@@ -63,6 +63,7 @@ class Login {
 
     console.log(this.body.email);
 
+    //mando email no endereço utilizado
     this.sendEmail(this.body.email);
   }
 

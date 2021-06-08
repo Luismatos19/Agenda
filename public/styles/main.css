@@ -1,11 +1,11 @@
-/* global  styling */
+/* style global */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* custom vars #e1f5fe*/
+/* variaveis */
 :root {
   --color-background: #e0e0e0;
   --color-text: black;
@@ -17,7 +17,7 @@
   --border-black: 1px solid rgba(0, 0, 0, 0.75);
 }
 
-/* user-agent font-size is 16px */
+/* Configuraçoes tamanho de telas */
 @media (max-width: 1080px) {
   html {
     font-size: 93.75%; /* 15px */
@@ -33,7 +33,7 @@
   }
 
   #column-resgister {
-    border-right: 0px;
+    border-right: 0px !important;
   }
 }
 
@@ -53,7 +53,7 @@ body {
   background: var(--color-background);
 }
 
-/* basic classes */
+/* container pages geral */
 .container {
   width: min(1440px, 90vw);
   margin: 0 auto;

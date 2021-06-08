@@ -2,11 +2,6 @@ h4 {
   margin-bottom: 2rem;
 }
 
-/*-----------Register Column-----------*/
-#column-resgister {
-  border-right: 0.5px solid black;
-}
-
 /*---------Form Login ----------*/
 .form-login .input-wrapper {
   width: 80%;
