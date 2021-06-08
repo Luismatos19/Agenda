@@ -36,11 +36,7 @@
         </thead>
         <tbody>
           <% contacts.forEach(contact=> { %>
-
             <tr onclick="window.location='/modal/<%= contact._id %>';">
-
-
-
               <div class="card-nome">
                 <td class="avatar-td">
                   <div class="avatar">
@@ -51,7 +47,6 @@
                 </td>
                 <td class="nome">
                   <div class="full-name">
-
                     <h3>
                       <%= contact.name %>
                     </h3>
@@ -60,7 +55,6 @@
               </div>
               <div class="category">
                 <td class="category">
-
                   <h3>
                     <%= contact.category %>
                   </h3>
@@ -69,25 +63,17 @@
               <div class="actions">
                 <td class="actions">
                   <div style="font-size: 1.5rem;">
-
                     <a href="/contact/delete/<%= contact._id %>">
                       <i class="bi bi-trash"></i>
                     </a>
-
                     <a href="/contact/index/<%= contact._id %>">
                       <i class="bi bi-pencil-square"></i>
                     </a>
-
-
                   </div>
                 </td>
               </div>
   </div>
-
   </tr>
-
-
-
   <% }); %>
     </tbody>
     </table>
@@ -110,7 +96,6 @@
         filter = input.value.toUpperCase();
         table = document.getElementById("myTable");
         tr = table.getElementsByTagName("tr");
-
         // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
           td = tr[i].getElementsByTagName("td")[1];

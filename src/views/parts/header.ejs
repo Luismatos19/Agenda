@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="/styles/partials/table.css" />
 
   <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
 
   <link
     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
@@ -29,20 +29,26 @@
 
 
   <title>Agenda</title>
+
 </head>
 
 <body>
 
-
-
+  <!--        NavBar             -->
   <header class="main-header">
     <div class="title">
+      <!--   Logotipo  -->
       <div class="logotipo">
-        <img href="/" class="logo" src="/images/logo.png" alt="Logo" />
+        <a href="/">
+          <img class="logo" src="/images/logo.png" alt="Logo" />
+        </a>
+        <!--   Title paáina  -->
         <h1>
           <%= title %>
         </h1>
       </div>
+
+      <!--   Botão entrar e sair  -->
       <div class="navbar">
         <% if(user) { %>
           <a href="/login/logout">

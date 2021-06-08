@@ -6,7 +6,6 @@ $("#zipcode").focusout(function () {
 
     success: function (resposta) {
       $("#street").val(resposta.logradouro);
-      $("#complemento").val(resposta.complemento);
       $("#district").val(resposta.bairro);
       $("#city").val(resposta.localidade);
       $("#state").val(resposta.uf);

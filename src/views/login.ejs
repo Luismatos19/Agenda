@@ -1,29 +1,31 @@
+<!--   include header  -->
 <%- include("parts/header", {title: 'Login' }) %>
 
+  <!--   container -->
   <div class="container">
     <div class="contents">
+      <!--  Login -->
       <div class="form-login">
         <div class="row">
 
           <div class="col-lg-12 ">
-
+            <!--   Title  -->
             <h1 class="text-center">Bem-vindo(a)</h1>
             <p class="text-center lead">Faça login ou registre-se.</p>
 
-
+            <!--   Messagens erro/sucesso  -->
             <%- include("parts/messages"); %>
-
+              <!--   Registro -->
               <div class="row">
                 <div class="col-lg my-5 ml-3" id="column-resgister">
                   <h4 class="text-center">Registre-se:</h4>
-
+                  <!--   Form registro -->
                   <form id="form-register" action="/login/register" method="POST">
 
                     <div class="input-wrapper">
                       <label for="name">Nome:</label>
                       <input type="text" id="name" name="name" />
                     </div>
-
 
                     <div class="input-wrapper">
                       <label for="email">Email:</label>
@@ -36,14 +38,17 @@
                     </div>
 
                   </form>
-
+                  <!--   Botão form registro -->
                   <div class="btn-login">
                     <button form="form-register" type="submit" class="btn btn-primary btn-lg">Registre-se</button>
                   </div>
                 </div>
 
+                <!--   Seção login  -->
                 <div class="col-lg my-5">
                   <h4 class="text-center">Faça o login:</h4>
+
+                  <!--   Form login  -->
                   <form id="form-login" action="/login/auth" method="POST">
 
                     <div class="input-wrapper">
@@ -57,6 +62,7 @@
                     </div>
 
                   </form>
+                  <!--   Botão form login  -->
                   <div class="btn-login">
                     <button form="form-login" type="submit" class="btn btn-primary btn-lg">Login</button>
                   </div>
@@ -74,5 +80,5 @@
 
   </div>
 
-
+  <!--   Include footer  -->
   <%- include("parts/footer") %>

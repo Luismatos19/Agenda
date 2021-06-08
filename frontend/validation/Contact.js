@@ -28,15 +28,15 @@ export default class Contact {
     let error = false;
 
     //valida campo nome
-    if (nameInput.value.length < 2) {
+    if (nameInput.value.length < 3) {
       this.alertError(nameInput, "Insira um nome.");
       error = true;
     }
 
     //valida campo telefone
     if (phoneInput.value.length === 0 && emailInput.value.length === 0) {
-      this.alertError(phoneInput, "Informe um telefone ou email válido.");
-      this.alertError(emailInput, "Informe um telefone ou email válido.");
+      this.alertError(phoneInput, "Informe um telefone  válido.");
+      this.alertError(emailInput, "Informe email válido.");
       error = true;
     }
 
@@ -51,10 +51,11 @@ export default class Contact {
     if (!error) el.submit(); //se nao houver erros o formulario é enviado
   }
 
-  alertError(campo, msg) {
-    const divError = document.createElement("div");
+  //função cria campo embaixo do input com a menssagem setada
+  alertError(field, msg) {
+    const divError = document.createElement("div"); //cria uma div
     divError.innerHTML = msg;
-    divError.classList.add("alert-danger");
-    campo.insertAdjacentElement("afterEnd", divError);
+    divError.classList.add("alert-danger"); //adiona a classe do bootstrap na div criada para erros
+    field.insertAdjacentElement("afterEnd", divError); //cria messagem embaixo do input
   }
 }
