@@ -1,77 +1,109 @@
 <%- include("parts/header", {title: 'Agenda de contatos' }) %>
 
-
-
   <div class="container">
-
-
-
     <div class="sumary">
 
+      <!--   Botão procura contato filtro nomes  -->
       <div class="search">
         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busque por nomes">
       </div>
-
+      <!--   Botão adicionar contato -->
       <a class="button gray" href="/contact/index">
         <span>
           <img src="/images/plus-24.svg" alt="Novo Contato" />
         </span>
-        Adicionar novo contato
+        Adicionar contato
       </a>
 
     </div>
 
+    <!--  If checa se ha contatos a serem exibidos -->
+    <% if(contacts.length==0) { %>
+      <div class="no-contact">
+        <h2>
+          Você não tem contatos para serem exibidos.
+        </h2>
+      </div>
 
+      <!--  Se hover carrega tabela com os contatos -->
+      <% } else { %>
+        <section class="cards">
 
-    <section class="cards">
-      <table id="myTable">
-        <thead>
-          <tr>
-            <th>A</th>
-            <th>Nome</th>
-            <th>Categoria</th>
-            <th>Açoes</th>
-          </tr>
+          <!--  Tabela com os contatos -->
+          <table id="myTable">
+            <!-- Titulo tabela  -->
+            <thead>
+              <tr>
+                <th>&nbsp</th>
+                <th>Nome</th>
+                <th>Categoria</th>
+                <th>Ações</th>
+              </tr>
 
-        </thead>
-        <tbody>
-          <% contacts.forEach(contact=> { %>
-            <tr onclick="window.location='/modal/<%= contact._id %>';">
-              <div class="card-nome">
-                <td class="avatar-td">
-                  <div class="avatar">
-                    <h1>
-                      <%= contact.name[0].toUpperCase() %>
-                    </h1>
+            </thead>
+            <!--  Corpo tabela -->
+            <tbody>
+
+              <!-- foreach cria linha na coluna para cada contato no array contacts  -->
+              <% contacts.forEach(contact=> { %>
+                <!--  linha clickavel manda pra rota modal com o id do contato clickado -->
+                <tr onclick="window.location='/modal/<%= contact._id %>';">
+                  <!--  coluna nome  -->
+                  <div class="card-nome">
+                    <td class="avatar-td">
+                      <div class="avatar">
+                        <!--  pega primeira letra do nome e coloca em maisculo no avatar  -->
+                        <h1>
+                          <%= contact.name[0].toUpperCase() %>
+                        </h1>
+                      </div>
+                    </td>
+                    <!--  coluna nome com a primera letra em maiscula -->
+                    <td class="nome">
+                      <div class="full-name">
+                        <h3>
+                          <%= contact.name[0].toUpperCase() + contact.name.substr(1) %>
+                        </h3>
+                      </div>
+                    </td>
                   </div>
-                </td>
-                <td class="nome">
-                  <div class="full-name">
-                    <h3>
-                      <%= contact.name %>
-                    </h3>
-                  </div>
-                </td>
-              </div>
-              <div class="category">
-                <td class="category">
-                  <h3>
-                    <%= contact.category %>
-                  </h3>
-                </td>
-              </div>
-              <div class="actions">
-                <td class="actions">
-                  <div style="font-size: 1.5rem;">
-                    <a href="/contact/delete/<%= contact._id %>">
-                      <i class="bi bi-trash"></i>
-                    </a>
-                    <a href="/contact/index/<%= contact._id %>">
-                      <i class="bi bi-pencil-square"></i>
-                    </a>
-                  </div>
-                </td>
-              </div>
+
+                  <!-- if para saber se tem catecoria-->
+                  <% if(!contacts.category ) { %>
+                    <div class="category">
+                      <td class="category">
+                        <h3>
+                          <%= contact.category[0].toUpperCase() + contact.category.substr(1) %>
+                        </h3>
+                      </td>
+                    </div>
+                    <!-- Se nao houver  cria um espaço em branco-->
+                    <% } else { %>
+                      <div>
+                        <td>
+                          <h3>
+                            &nbsp
+                          </h3>
+                        </td>
+                      </div>
+
+                      <% } %>
+
+                        <!-- Coluna com as acões-->
+                        <div class="actions">
+                          <td class="actions">
+                            <div class="actions-icons" style="font-size: 1.5rem;">
+                              <!-- Ação delete -->
+                              <a href="/contact/delete/<%= contact._id %>">
+                                <i class="bi bi-trash"></i>
+                              </a>
+                              <!-- Ação edit -->
+                              <a href="/contact/index/<%= contact._id %>">
+                                <i class="bi bi-pencil-square"></i>
+                              </a>
+                            </div>
+                          </td>
+                        </div>
   </div>
   </tr>
   <% }); %>
@@ -79,40 +111,41 @@
     </table>
 
     </section>
-    </div>
+    <% } %>
+      </div>
 
 
 
 
-    </script>
+      </script>
 
 
 
-    <script>
-      function myFunction() {
-        // Declare variables
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
-        // Loop through all table rows, and hide those who don't match the search query
-        for (i = 0; i < tr.length; i++) {
-          td = tr[i].getElementsByTagName("td")[1];
-          if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-              tr[i].style.display = "";
-            } else {
-              tr[i].style.display = "none";
+      <script>
+        //Função filtra coluna nome
+        function myFunction() {
+
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("myInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable");
+          tr = table.getElementsByTagName("tr");
+
+          //loop percorre todos as linhas da coluna nome
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1]; // [1] corresponde ao index da coluna a ser filtrada
+
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
             }
           }
         }
-      }
-    </script>
+      </script>
 
-
-
-
-
-    <%- include("parts/footer") %>
+      <%- include("parts/footer") %>

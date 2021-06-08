@@ -53,12 +53,19 @@ var Contact = /*#__PURE__*/function () {
       var el = event.target; //Campos do Form
 
       var nameInput = el.querySelector('input[name="name"]');
+      var categoryInput = el.querySelector('input[name="category"]');
       var phoneInput = el.querySelector('input[name="phone"]');
       var emailInput = el.querySelector('input[name="email"]');
       var error = false; //valida campo nome
 
       if (nameInput.value.length < 3) {
         this.alertError(nameInput, "Insira um nome.");
+        error = true;
+      } //valida campo categoria
+
+
+      if (categoryInput.value.length < 3) {
+        this.alertError(categoryInput, "Insira uma categoria.");
         error = true;
       } //valida campo telefone
 

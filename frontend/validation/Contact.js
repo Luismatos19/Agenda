@@ -22,6 +22,7 @@ export default class Contact {
     const el = event.target;
     //Campos do Form
     const nameInput = el.querySelector('input[name="name"]');
+    const categoryInput = el.querySelector('input[name="category"]');
     const phoneInput = el.querySelector('input[name="phone"]');
     const emailInput = el.querySelector('input[name="email"]');
 
@@ -30,6 +31,12 @@ export default class Contact {
     //valida campo nome
     if (nameInput.value.length < 3) {
       this.alertError(nameInput, "Insira um nome.");
+      error = true;
+    }
+
+    //valida campo categoria
+    if (categoryInput.value.length < 3) {
+      this.alertError(categoryInput, "Insira uma categoria.");
       error = true;
     }
 

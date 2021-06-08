@@ -1,17 +1,24 @@
+<!--   Pagina usada tanto para candastrat contato quanto para editart contato  -->
 <%- include("parts/header", {title: 'Agenda de contatos' }) %>
 
+  <!--     -->
   <div class="container">
     <div class="contents">
 
+      <!--   If  para mudar o cabeçalho do form (caso tenha o id na rota) -->
       <% if(contact._id) {%>
+        <!--   Form cadastro  -->
         <form action="/contact/edit/<%= contact._id %>" class="form-contact" id="form-contact" method="POST">
           <% } else { %>
+            <!--   Form edit  -->
             <form action="/contact/register" class="" id="form-contact" method="POST">
               <% } %>
                 <fieldset>
+                  <!--   Titulo  -->
                   <legend>Dados do Contato</legend>
                   <div class="separator light"></div>
 
+                  <!--   Menssagens de erro/sucesso  -->
                   <%- include('parts/messages'); %>
 
                     <div class="input-group form-group">
@@ -23,7 +30,7 @@
 
                       <div class="input-wrapper form-group">
                         <label for="last_name">Sobrenome:</label>
-                        <input value="<%= contact.last_name %>" type="text" id="last-name" name="last-name" />
+                        <input value="<%= contact.last_name %>" type="text" id="last_name" name="last_name" />
                       </div>
                     </div>
 
@@ -97,12 +104,14 @@
                 </fieldset>
             </form>
 
+            <!--   Botão form  -->
             <div class="btn-login">
               <button form="form-contact" type="submit" class="btn btn-primary btn-lg">Salvar</button>
             </div>
     </div>
   </div>
 
+  <!--   Script busca cep  -->
   <script src="/scripts/findZipecode.js" type="text/javascript"></script>
 
   <%- include("parts/footer") %>

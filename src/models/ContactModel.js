@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Validator = require("validator");
 
+//schema para  gravação no db
 const contactSchema = new mongoose.Schema({
   name: { type: String, required: true },
   last_name: { type: String, required: false, default: "" },
@@ -51,7 +52,7 @@ function Contact(body) {
     }
     this.body = {
       name: this.body.name,
-      last: this.body.last_name,
+      last_name: this.body.last_name,
       email: this.body.email,
       category: this.body.category,
       phone: this.body.phone,
@@ -63,11 +64,10 @@ function Contact(body) {
         city: this.body.city,
         state: this.body.state,
       },
-
-      password: this.body.password,
     };
   };
 
+  //update metodo
   Contact.prototype.edit = async function (id) {
     if (typeof id !== "string") return;
 
@@ -104,7 +104,6 @@ Contact.findContacts = async function () {
 };
 
 //deleta contatos
-
 Contact.delete = async function (id) {
   if (typeof id !== "string") return;
 

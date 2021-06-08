@@ -38,7 +38,7 @@ input {
   border-radius: 3px;
 }
 
-/* -------------Cards---------------------*/
+/* -------------Form---------------------*/
 
 .cards {
   margin-top: 2rem;
@@ -57,7 +57,7 @@ input {
   margin-top: 0.5rem;
 }
 
-/* -------------Card Content---------------------*/
+/* -------------Form Content---------------------*/
 #card-content {
   display: flex;
   flex-direction: row;
@@ -85,10 +85,11 @@ input {
   border: 0.75px solid black;
 }
 
-/* ------------- Card icons---------------------*/
+/* -------------  icons---------------------*/
 .actions {
   color: var(--color-primary);
   margin-right: 1rem;
+  align-items: center;
 }
 
 .actions i {
@@ -104,6 +105,12 @@ input {
   color: var(--color-primary);
 }
 
+.actions-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* -------------Avatar Card---------------------*/
 .avatar {
   width: 5rem;
@@ -116,4 +123,14 @@ input {
   margin: 0.5rem 0.5rem;
 
   border: 0.75px solid black;
+}
+
+/* -------------Div mostrado caso não haja contatos---------------------*/
+.no-contact {
+  background: var(--color-white);
+
+  margin-top: 3rem;
+  text-align: center;
+  border-radius: 3px;
+  padding: 1rem 0;
 }
