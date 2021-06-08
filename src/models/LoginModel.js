@@ -1,6 +1,10 @@
+require("dotenv").config();
+
 const mongoose = require("mongoose");
 const Validator = require("validator");
 const bcryptjs = require("bcryptjs");
+
+const nodemailer = require("nodemailer");
 
 //login schema
 const loginSchema = new mongoose.Schema({
@@ -56,6 +60,39 @@ class Login {
     this.body.password = bcryptjs.hashSync(this.body.password, salt);
 
     this.user = await loginModel.create(this.body);
+
+    console.log(this.body.email);
+
+    this.sendEmail(this.body.email);
+  }
+
+  //envia email quando o usuario e registrado
+
+  sendEmail(email) {
+    let transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      auth: {
+        user: `${process.env.CONNECTIONEMAIL}`,
+        pass: `${process.env.CONNECTIONPASSWORD}`,
+      },
+    });
+
+    //manda o email com a menssagem
+    transporter
+      .sendMail({
+        from: "Luis <luismteste2@gmail.com>",
+        to: `${email}`,
+        subject: "Olá, novo Registro na Agenda realizado com sucesso",
+        text: "Você fez  registro na Agenda, bem-vindo(a)! ",
+      })
+      .then((message) => {
+        console.log(message);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   //metodo para validar usuario

@@ -29,9 +29,20 @@ module.exports = {
     if (!req.params.id) return res.render("errorPage"); // manda para home se nao houver id na req
 
     const contact = await Contact.findById(req.params.id);
+
     if (!contact) return res.render("errorPage");
 
-    res.render("contact", { contact: contact });
+    res.render("contact", { contact });
+  },
+
+  async modal(req, res) {
+    if (!req.params.id) return res.render("errorPage"); // manda para home se nao houver id na req
+
+    const contact = await Contact.findById(req.params.id);
+
+    if (!contact) return res.render("errorPage");
+
+    res.render("modal", { contact });
   },
 
   async edit(req, res) {
@@ -66,5 +77,11 @@ module.exports = {
     req.flash("success", "Contato excluido com sucesso");
     req.session.save(() => res.redirect("back")); //manda para home no caso de sucesso
     return;
+  },
+
+  async find(req, res) {
+    const contacts = await Contact.findName(req.params.name);
+
+    return res.render("index", { contacts });
   },
 };

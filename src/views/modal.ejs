@@ -1,0 +1,106 @@
+<%- include("parts/header", {title: 'Agenda de contatos' }) %>
+
+  <div class="modal-overlay active">
+    <div class="modal-contact">
+      <div class="page-content page-container" id="page-content">
+        <div class="padding">
+          <div class="row container d-flex justify-content-center">
+            <div class="col-xl-6 col-md-12">
+              <div class="card user-card-full">
+                <div class="row m-l-0 m-r-0">
+                  <div class="col-sm-4 bg-c-lite-green user-profile">
+                    <div class="card-block text-center text-white">
+                      <div class="m-b-25 modal-avatar">
+                        <div class="avatar">
+                          <h1>
+                            <%= contact.name[0].toUpperCase() %>
+                          </h1>
+                        </div>
+                      </div>
+                      <h6 class="f-w-600">
+                        <%= contact.name %>
+                      </h6>
+                      <p>Web Designer</p>
+                      <div class="btn-login">
+                        <a href="/">
+                          <button class="btn btn-primary btn-lg">Voltar</button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-8">
+                    <div class="card-block">
+                      <h6 class="m-b-20 p-b-5 b-b-default f-w-600 ">Information
+
+                      </h6>
+
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <p class="m-b-10 f-w-600">Email</p>
+                          <h6 class="text-muted f-w-400">
+                            <%= contact.email %>
+                          </h6>
+                        </div>
+                        <div class="col-sm-6">
+                          <p class="m-b-10 f-w-600">Telefone</p>
+                          <h6 class="text-muted f-w-400">
+                            <%= contact.phone %>
+                          </h6>
+                        </div>
+                      </div>
+                      <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Endereço</h6>
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <p class="m-b-10 f-w-600">Bairro</p>
+                          <h6 class="text-muted f-w-400">
+                            <%= contact.adress.district %>
+
+                          </h6>
+                        </div>
+                        <div class="col-sm-6">
+                          <p class="m-b-10 f-w-600">Rua:</p>
+                          <h6 class="text-muted f-w-400">
+                            <%= contact.adress.street %>
+                          </h6>
+                        </div>
+                        <div class="col-sm-6">
+                          <p class="m-b-10 f-w-600">Numero</p>
+                          <h6 class="text-muted f-w-400">
+                            <%= contact.adress.local %>
+                          </h6>
+                        </div>
+                        <div class="col-sm-6">
+                          <p class="m-b-10 f-w-600">Cep </p>
+                          <h6 class="text-muted f-w-400">
+                            <%= contact.adress.zipcode %>
+                          </h6>
+                        </div>
+                        <div class="col-sm-6">
+                          <p class="m-b-10 f-w-600">Cidade</p>
+                          <h6 class="text-muted f-w-400">
+                            <%= contact.adress.city %>
+                          </h6>
+                        </div>
+                        <div class="col-sm-6">
+                          <p class="m-b-10 f-w-600">UF</p>
+                          <h6 class="text-muted f-w-400">
+                            <%= contact.adress.state %>
+                          </h6>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
+  <%- include("parts/footer") %>

@@ -1,6 +1,7 @@
 <%- include("parts/header", {title: 'Agenda de contatos' }) %>
 
 
+
   <div class="container">
 
 
@@ -8,8 +9,7 @@
     <div class="sumary">
 
       <div class="search">
-        <input type="text" class="contact" id="search-contat" placeholder="Buscar um contato">
-
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busque por nomes">
       </div>
 
       <a class="button gray" href="/contact/index">
@@ -21,66 +21,113 @@
 
     </div>
 
+
+
     <section class="cards">
+      <table id="myTable">
+        <thead>
+          <tr>
+            <th>A</th>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Açoes</th>
+          </tr>
 
-      <% contacts.forEach(contact=> { %>
-        <article class="clickablecard">
-          <h2><a href="https://example.com/" class="cardmainlink"></a></h2>
-          <div class="card border-dark mb-2" id="card-content">
-            <div class="card-nome">
-              <div class="avatar">
-                <h1>
-                  <%= contact.name[0].toUpperCase() %>
-                </h1>
+        </thead>
+        <tbody>
+          <% contacts.forEach(contact=> { %>
+
+            <tr onclick="window.location='/modal/<%= contact._id %>';">
+
+
+
+              <div class="card-nome">
+                <td class="avatar-td">
+                  <div class="avatar">
+                    <h1>
+                      <%= contact.name[0].toUpperCase() %>
+                    </h1>
+                  </div>
+                </td>
+                <td class="nome">
+                  <div class="full-name">
+
+                    <h3>
+                      <%= contact.name %>
+                    </h3>
+                  </div>
+                </td>
               </div>
-              <div class="full-name">
+              <div class="category">
+                <td class="category">
 
-                <h3>
-                  <%= contact.name %>
-                </h3>
-
-
+                  <h3>
+                    <%= contact.category %>
+                  </h3>
+                </td>
               </div>
-            </div>
-            <div class="category">
-              <p>Categoria</p>
-              <h4>
-                <%= contact.category %>
-              </h4>
-            </div>
-            <div class="actions">
-              <div style="font-size: 1.5rem;">
-                <a href="/contact/delete/<%= contact._id %>">
-                  <i class="bi bi-trash"></i>
-                </a>
-                <a href="/contact/index/<%= contact._id %>">
-                  <i class="bi bi-pencil-square"></i>
-                </a>
+              <div class="actions">
+                <td class="actions">
+                  <div style="font-size: 1.5rem;">
 
+                    <a href="/contact/delete/<%= contact._id %>">
+                      <i class="bi bi-trash"></i>
+                    </a>
+
+                    <a href="/contact/index/<%= contact._id %>">
+                      <i class="bi bi-pencil-square"></i>
+                    </a>
+
+
+                  </div>
+                </td>
               </div>
-            </div>
-          </div>
-        </article>
-        <% }); %>
-
-          <a href="#" onclick="Modal.open()" class="button new">+ Nova Transação</a>
-
-    </section>
-
   </div>
 
-  <%- include("parts/modal")%>
+  </tr>
 
-    <script src="/scripts/modal.js"></script>
 
-    <script type="text/javascript">
-      var cards = document.querySelectorAll(".clickablecard");
-      for (var i = 0; i < cards.length; i++) {
-        cards[i].addEventListener('click', function (e) {
-          var link = this.querySelector(".cardmainlink");
-          link.click();
-        }, false);
+
+  <% }); %>
+    </tbody>
+    </table>
+
+    </section>
+    </div>
+
+
+
+
+    </script>
+
+
+
+    <script>
+      function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[1];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
+        }
       }
     </script>
+
+
+
+
 
     <%- include("parts/footer") %>

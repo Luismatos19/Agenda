@@ -1,0 +1,73 @@
+#myInput {
+  background-position: 10px 12px;
+
+  width: 50%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid black;
+  margin-bottom: 12px;
+}
+
+#transation {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}
+
+#data-table {
+  width: 100%;
+  border-spacing: 5 5rem;
+  color: #969cb3;
+  background: black;
+}
+
+table th {
+  background: white;
+
+  font-weight: bolder;
+  padding: 1rem 2rem;
+
+  text-align: center;
+}
+
+table td {
+  background: white;
+  padding: 1rem 2rem;
+}
+
+table tr:hover {
+  cursor: pointer;
+}
+
+table tr {
+  border-bottom: var(--border-black);
+}
+
+table thead tr th:first-child,
+table tbody tr td:first-child {
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+table thead tr th:last-child,
+table tbody tr td:last-child {
+  border-radius: 0rem 0.25rem 0.25rem 0;
+}
+
+td.name {
+  text-align: left;
+}
+
+td.avatar-td {
+  width: 5%;
+}
+
+td:nth-child(1) {
+  width: 5%;
+}
+
+td.category {
+  width: 10%;
+}
+td.actions {
+  align-items: flex-end;
+}

@@ -18,10 +18,12 @@ input {
 
 /* -------------Search input---------------------*/
 .search {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   margin-right: 2rem;
+  width: 30rem;
+}
+
+#myInput {
+  height: 100%;
 }
 
 .contact {
@@ -48,7 +50,7 @@ input {
 }
 
 .cards .card:hover {
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  border: var(--boder-black);
 }
 
 .card-section {
@@ -75,46 +77,12 @@ input {
   text-align: center;
 }
 
-.category h4 {
+.category h3 {
   background-color: var(--color-primary);
   border-radius: 2.5rem;
   font-size: 1rem;
   padding: 5px;
   border: 0.75px solid black;
-}
-
-.full-name {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* -------------Card Clikcavel---------------------*/
-.clickablecard:hover {
-  cursor: pointer;
-}
-
-.clickablecard:hover p {
-  color: #00d;
-}
-
-.clickablecard:hover p a {
-  color: #000;
-}
-
-article h2 a:hover,
-article h2 a:focus,
-.clickablecard:hover .cardmainlink {
-  text-decoration: underline;
-  text-decoration-skip: ink;
-  text-decoration-skip-ink: auto;
-  color: #00d;
-}
-
-article a:hover img,
-article a:focus img,
-.clickablecard:hover img {
-  transform: scale(1.2);
 }
 
 /* ------------- Card icons---------------------*/
@@ -125,7 +93,7 @@ article a:focus img,
 
 .actions i {
   padding-right: 0.5rem;
-  size: 3rem;
+  size: 4rem;
 }
 
 .actions i:hover {
